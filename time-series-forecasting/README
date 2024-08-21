@@ -1,0 +1,144 @@
+# https://ourworldindata.org/working-hours
+
+Data source: Huberman & Minns (2007) and PWT 9.1 (2019) – Learn more about this data
+
+Note: We plot the data from Huberman & Minns (2007) and extend coverage using an updated vintage of PWT,
+which uses the same underlying source. Due to differences in measurement, comparability between countries is
+limited.
+
+@article{owid-working-hours,
+    author = {Charlie Giattino and Esteban Ortiz-Ospina and Max Roser},
+    title = {Working Hours},
+    journal = {Our World in Data},
+    year = {2020},
+    note = {https://ourworldindata.org/working-hours}
+}
+
+Advanced Time-Series: Types, Methods, Applications and Top 20 Python Libraries 📈
+
+Advanced time series forecasting involves using machine learning, and deep learning techniques to predict future values of time-dependent data, accounting for complex patterns and seasonality, trends.
+
+——————————
+
+📈 Time series Types:
+
+✶ Univariate
+✶ Multivariate
+✶ Stationary
+✶ Non-Stationary
+✶ Seasonal
+✶ Non-Seasonal
+✶ Irregular
+✶ Regular
+✶ Additive
+✶ Multiplicative
+✶ Periodic
+✶ Non-Periodic
+
+——————————
+
+⌛️ Here are several advanced time series forecasting methods:
+
+› LSTM (Long Short-Term Memory) Networks: A type of recurrent neural network (RNN) capable of learning long-term dependencies.
+
+› GRU (Gated Recurrent Unit) Networks: Similar to LSTM but with a simpler architecture.
+
+› Transformer Models: Uses attention mechanisms to capture dependencies without relying on sequential data.
+
+› TBATS (Trigonometric, Box-Cox, ARMA, Trend, Seasonal): Handles multiple seasonalities and complex seasonal patterns.
+
+› XGBoost (Extreme Gradient Boosting): An implementation of gradient-boosted decision trees designed for speed and performance.
+
+› N-BEATS (Neural Basis Expansion Analysis): A neural network-based approach designed specifically for time series forecasting.
+
+› TFT (Temporal Fusion Transformers): Combines the interpretability of transformers with temporal fusion for time series forecasting.
+
+› Large Language Models (LLMs): LLMs like GPT-4 can be adapted for time series forecasting by encoding time series as text, using embeddings, fine-tuning pre-trained models, combining with traditional methods, and leveraging contextual understanding from text-based data.
+
+——————————
+Pseudocode:
+Import necessary libraries.
+Read the CSV file into a DataFrame.
+Create a dropdown menu for selecting the entities.
+Filter the DataFrame based on the selected entities.
+Define a function to preprocess the data for N-BEATS.
+Define a function to build and train the N-BEATS model.
+Perform time series forecasting for the next 100 years using the N-BEATS model for both average annual and daily working hours per worker.
+Plot the data for average annual working hours per worker including the forecast.
+Plot the data for average daily working hours per worker including the forecast.
+Create a dashboard layout to display the dropdown and both plots.
+Update the callback to handle multiple selected entities and update both plots with the forecast.
+
+
+
+
+
+📊 Applications:
+
+♕ Predictive Maintenance
+♕ Healthcare Monitoring and Forecasting
+♕ Energy Consumption Forecasting
+♕ Supply Chain Optimization
+♕ Natural Language Processing for Temporal Data
+♕ Sensor Data Analysis
+♕ Traffic Flow Prediction
+♕ Sales and Revenue Forecasting
+♕ Economic Indicators Forecasting
+♕ Climate Modeling
+♕ Stock Price Prediction
+♕ Cryptocurrency Price Prediction
+♕ Customer Churn Prediction
+♕ Social Media Trend Analysis
+♕ Fraud Detection
+♕ Real-time Event Detection and Response
+
+PROMPT1:
+
+show me python code for a dashboard which reads data from csv called annual-workin-hours per-worker.csv in DATA folder and plots Average annual working hours per worker as a function of Year for Entity to be selected from dropdown menu
+
+PROMPT2:
+change the dropdown to allow multiple selections
+
+PROMPT3:
+add another figure that shows averaged daily working hours per worker i.e. divide average annual working hours per worker by 365.24 and plot it as function of Year
+
+PROMPT4:
+perform time series forecasting on both plots for next 100 years and add results to the plots
+
+PROMPT5:
+replace the ExponentialSmoothing algorithm with LSTM network
+
+replace lstm network with gated recurrent unit
+
+replace TBATS with XGBoost
+
+replace xgboost with temporal fusion transformer
+
+replace TFT with neural basis expansion analysis
+
+https://www.linkedin.com/learning/time-series-analysis-and-forecasting-with-gpt-4o/use-autocorrelation-and-partial-autocorrelation-plots-for-time-series-analysis?autoSkip=true&resume=false&u=2166394
+
+upgrade the dashboard to show time series forecasting for daily working hours using exponential smoothing, gated recurrence unit, long term short term, temporal fusion transformers and Xgboost at once
+>> this give error Oops, your response got filtered , vote down if you think it should not have happened"
+
+# generate the file with data for last 5 years, where first columns should contain crypto currency name
+
+exponential smoothing methods
+
+https://www.encora.com/insights/exponential-smoothing-methods-for-time-series-forecasting#:~:text=Exponential%20Smoothing%20Methods%20are%20a,these%20values%20get%20exponentially%20smaller.
+https://towardsdatascience.com/time-series-in-python-exponential-smoothing-and-arima-processes-2c67f2a52788  # this one shows ARIMA and confidence interval
+https://www.geeksforgeeks.org/exponential-smoothing-for-time-series-forecasting/
+https://machinelearningmastery.com/exponential-smoothing-for-time-series-forecasting-in-python/
+https://en.wikipedia.org/wiki/Exponential_smoothing
+https://medium.com/@sachin.jain3001/exploring-exponential-smoothing-techniques-for-time-series-forecasting-in-python-e109a010d22d
+
+
+
+
+
+
+
+
+
+
+
