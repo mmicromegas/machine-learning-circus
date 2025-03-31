@@ -1,5 +1,4 @@
 import os
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -149,17 +148,17 @@ def train_perceptron(X, Y, activation_func, loss_func, learning_rate=0.01, epoch
 X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])  # Input features
 Y_train = np.array([0, 0, 0, 1])  # Target outputs
 
-learning_rate = 0.8
-epochs = 2000
+learning_rate = 0.1
+epochs = 5000
 
 activation_functions = {
     'Sigmoid': activation_sigmoid,
     'Tanh': activation_tanh,
     'ReLU': activation_relu,
-    'Leaky ReLU': activation_leaky_relu,
+    'Leaky_ReLU': activation_leaky_relu,
     'GELU': activation_gelu,
     'Identity': activation_identity,
-    'Binary Step': activation_binary_step,
+    'Binary_Step': activation_binary_step,
     'Soboleva': activation_soboleva,
     'Softplus': activation_softplus,
     'ELU': activation_elu,
@@ -175,13 +174,13 @@ activation_functions = {
 loss_functions = {
     'MSE': loss_mse,
     'MAE': loss_mae,
-    'Cross Entropy': loss_cross_entropy,
+    'Cross_Entropy': loss_cross_entropy,
     'Hinge': loss_hinge,
     'Huber': loss_huber,
-    'KL Divergence': loss_kl_divergence,
+    'KL_Divergence': loss_kl_divergence,
     'MSLE': loss_msle,
     'Poisson': loss_poisson,
-    'Squared Hinge': loss_squared_hinge,
+    'Squared_Hinge': loss_squared_hinge,
     #'VAE': loss_vae,
     'Wasserstein': loss_wasserstein,
     'Exponential': loss_exponential,
@@ -192,24 +191,22 @@ loss_functions = {
     'Square': loss_square
 }
 
+final_losses = {}
+
 for loss_name, loss_func in loss_functions.items():
-    loss_histories = {}
     for activation_name, activation_func in activation_functions.items():
         activation = activation_func
         loss = loss_func
         _, _, loss_history = train_perceptron(X_train, Y_train, activation_func, loss_func, learning_rate, epochs)
-        loss_histories[activation_name] = loss_history
+        final_losses[(activation_name, loss_name)] = loss_history[-1]
 
-    # Plot loss history for all activation functions for the current loss function
-    plt.figure(figsize=(10, 6))
-    for activation_name, loss_history in loss_histories.items():
-        plt.plot(loss_history, label=activation_name)
+# Print final losses
+for (activation_name, loss_name), final_loss in final_losses.items():
+    print(f'Activation: {activation_name}, Loss: {loss_name}, Final Loss: {final_loss}')
 
-    plt.yscale('log')
-    plt.ylim(1e-20, 1.e3)
-    plt.xlabel('Epoch')
-    plt.ylabel('Total Loss')
-    plt.title(f'Total Loss as Function of Epoch for Different Activation Functions\nUsing {loss_name} Loss')
-    plt.legend()
-    plt.savefig(os.path.join('OUTPUT',f'loss_history_{loss_name}.png'))
-    plt.close()
+# store to csv
+import pandas as pd
+df = pd.DataFrame(final_losses.items(), columns=['Activation and Loss', 'Final Loss'])
+df[['Activation', 'Loss']] = df['Activation and Loss'].apply(pd.Series)
+df.drop(columns=['Activation and Loss'], inplace=True)
+df.to_csv(f'final_losses_lr{learning_rate}_epochs{epochs}.csv', index=False)
