@@ -6,7 +6,7 @@ from matplotlib import cm
 from matplotlib import colors
 
 # Read final_losses.csv
-filename = 'final_losses_lr0.1_epochs5000.csv'
+filename = 'final_losses_lr0.8_epochs5000_or.csv'
 df = pd.read_csv(filename)
 
 # from filename, parse everything after final_losses_ and before .csv
@@ -83,7 +83,20 @@ for _, row in min_loss_rows.iterrows():
             f'({list(activation_mapping.keys())[list(activation_mapping.values()).index(row["activation_function"])]}, {list(loss_mapping.keys())[list(loss_mapping.values()).index(row["loss_function"])]})', color='orange')
 
 # tilt the view angle
-#ax.view_init(elev=30, azim=30)
+ax.view_init(elev=20, azim=225)
+
+# save as png
+plt.savefig(f'3d_plot_{params}.png', dpi=300, bbox_inches='tight')
+
+# Increase font size for title and labels
+ax.title.set_fontsize(16)
+ax.xaxis.label.set_fontsize(14)
+ax.yaxis.label.set_fontsize(14)
+ax.zaxis.label.set_fontsize(14)
+
+# Increase font size for tick labels
+ax.tick_params(axis='both', which='major', labelsize=12)
+ax.tick_params(axis='z', which='major', labelsize=12)
 
 # Show plot
 plt.show()
