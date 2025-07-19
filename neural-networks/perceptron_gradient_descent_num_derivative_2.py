@@ -140,7 +140,6 @@ def train_perceptron(X, Y, activation_func, loss_func, learning_rate=0.01, epoch
 
         # Optionally: calculate total loss for monitoring
         total_loss = np.sum((Y - activation_func(np.dot(X, weights) + bias)) ** 2) / 2
-        #total_loss = loss_func(Y, activation_func(np.dot(X, weights) + bias))
         loss_history.append(total_loss)
 
     return weights, bias, loss_history
@@ -150,46 +149,46 @@ X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])  # Input features
 Y_train = np.array([0, 0, 0, 1])  # Target outputs
 
 learning_rate = 0.8
-epochs = 2000
+epochs = 100
 
 activation_functions = {
     'Sigmoid': activation_sigmoid,
-    'Tanh': activation_tanh,
+    #'Tanh': activation_tanh,
     'ReLU': activation_relu,
-    'Leaky ReLU': activation_leaky_relu,
-    'GELU': activation_gelu,
-    'Identity': activation_identity,
-    'Binary Step': activation_binary_step,
-    'Soboleva': activation_soboleva,
+    #'Leaky ReLU': activation_leaky_relu,
+    #'GELU': activation_gelu,
+    #'Identity': activation_identity,
+    #'Binary Step': activation_binary_step,
+    #'Soboleva': activation_soboleva,
     'Softplus': activation_softplus,
-    'ELU': activation_elu,
+    #'ELU': activation_elu,
     'SELU': activation_selu,
-    'PReLU': activation_prelu,
+    #'PReLU': activation_prelu,
     'RPSU': activation_rpsu,
-    'SiLU': activation_silu,
-    'ELiSH': activation_elish,
-    'Gaussian': activation_gaussian,
-    'Sinusoid': activation_sinusoid
+    #'SiLU': activation_silu,
+    #'ELiSH': activation_elish,
+    #'Gaussian': activation_gaussian,
+    #'Sinusoid': activation_sinusoid
 }
 
 loss_functions = {
-    'MSE': loss_mse,
-    'MAE': loss_mae,
-    'Cross Entropy': loss_cross_entropy,
-    'Hinge': loss_hinge,
-    'Huber': loss_huber,
-    'KL Divergence': loss_kl_divergence,
+    #'MSE': loss_mse,
+    #'MAE': loss_mae,
+    #'Cross Entropy': loss_cross_entropy
+    #'Hinge': loss_hinge,
+    #'Huber': loss_huber,
+    #'KL Divergence': loss_kl_divergence,
     'MSLE': loss_msle,
-    'Poisson': loss_poisson,
-    'Squared Hinge': loss_squared_hinge,
+    #'Poisson': loss_poisson,
+    #'Squared Hinge': loss_squared_hinge,
     #'VAE': loss_vae,
-    'Wasserstein': loss_wasserstein,
-    'Exponential': loss_exponential,
-    'Quantile': loss_quantile,
-    'Logistic': loss_logistic,
-    'Tangent': loss_tangent,
-    'Savage': loss_savage,
-    'Square': loss_square
+    #'Wasserstein': loss_wasserstein,
+    #'Exponential': loss_exponential,
+    #'Quantile': loss_quantile,
+    #'Logistic': loss_logistic,
+    #'Tangent': loss_tangent,
+    #'Savage': loss_savage,
+    #'Square': loss_square
 }
 
 for loss_name, loss_func in loss_functions.items():

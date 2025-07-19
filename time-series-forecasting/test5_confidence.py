@@ -33,40 +33,22 @@ print(data.head())
 train_size = int(len(data) * 0.8)
 train, test = data[:train_size], data[train_size:]
 
-
 ses_model = SimpleExpSmoothing(train).fit()
 ses_forecast = ses_model.forecast(steps=len(test))
 
 holt_model = Holt(train).fit()
 holt_forecast = holt_model.forecast(steps=len(test))
 
-# hw_model = ExponentialSmoothing(train, seasonal='mul', seasonal_periods=12).fit()
-hw_model = ExponentialSmoothing(train, trend='add',seasonal='add',  seasonal_periods=12).fit()
+hw_model = ExponentialSmoothing(train, seasonal='mul', seasonal_periods=12).fit()
 hw_forecast = hw_model.forecast(steps=len(test))
 
 # plot the results
-plt.figure(figsize=(9, 6))
+plt.figure(figsize=(12, 6))
 plt.plot(train.index, train, label='Train')
 plt.plot(test.index, test, label='Test')
 plt.plot(test.index, ses_forecast, label='Simple Exponential Smoothing')
-#plt.plot(test.index, holt_forecast, label='Holt')
-#plt.plot(test.index, hw_forecast, label='Holt-Winters')
-
-# make the x-axis showing only years
-plt.xticks(np.arange(0, len(data), step=12), data.index[::12])
-
-# add title Bitcoin  Monthly Close
-plt.title('Bitcoin Monthly Close')
-
-# add x axis label to be Year
-plt.xlabel('Year-Month')
-
-# add y axis label to be Monthly Close (USD)
-plt.ylabel('Monthly Close (USD)')
-
-
-
-
+plt.plot(test.index, holt_forecast, label='Holt')
+plt.plot(test.index, hw_forecast, label='Holt-Winters')
 
 
 plt.legend()

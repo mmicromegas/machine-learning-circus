@@ -145,10 +145,13 @@ def train_perceptron(X, Y, activation_func, loss_func, learning_rate=0.01, epoch
     return weights, bias, loss_history
 
 # Example usage
-X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])  # Input features
-Y_train = np.array([0, 0, 0, 1])  # Target outputs
+#X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])  # Input features
+#Y_train = np.array([0, 0, 0, 1])  # Target outputs
 
-learning_rate = 0.1
+X_train = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])  # Input features
+Y_train = np.array([0, 1, 1, 1])  # Target outputs
+
+learning_rate = 0.8
 epochs = 5000
 
 activation_functions = {
@@ -209,4 +212,4 @@ import pandas as pd
 df = pd.DataFrame(final_losses.items(), columns=['Activation and Loss', 'Final Loss'])
 df[['Activation', 'Loss']] = df['Activation and Loss'].apply(pd.Series)
 df.drop(columns=['Activation and Loss'], inplace=True)
-df.to_csv(f'final_losses_lr{learning_rate}_epochs{epochs}.csv', index=False)
+df.to_csv(f'final_losses_lr{learning_rate}_epochs{epochs}_or.csv', index=False)

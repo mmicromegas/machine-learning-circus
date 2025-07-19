@@ -1,0 +1,11 @@
+ALERT_ID,ALERT_SCORE,IS_ISSUE
+alert1,40,0
+alert2,50,1
+alert3,60,0
+alert4,70,1
+alert5,80,0
+alert6,90,1
+alert7,100,0
+alert8,40,1
+alert9,50,0
+alert10,80,1
